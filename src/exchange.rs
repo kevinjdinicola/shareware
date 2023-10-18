@@ -1,7 +1,8 @@
 use std::collections::HashMap;
+use iroh::sync::AuthorPublicKey;
 use crate::content::Content;
-use crate::util::PublicKey;
+
 
 struct Exchange {
-    peer_data: HashMap<PublicKey, Vec<Content>>,
+    peer_data: HashMap<AuthorPublicKey, Vec<Content>>,
 }

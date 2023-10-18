@@ -1,5 +1,6 @@
+use iroh::bytes::Hash;
+use iroh::sync::AuthorPublicKey;
 use crate::identity::Identity;
-use crate::util::{Hash, PublicKey};
 
 const STRING_CONTENT_TYPE: &str = "text";
 
@@ -9,7 +10,7 @@ pub struct Content {
     size: u64,
     data: Option<Vec<u8>>, // if small enough
     data_hash: Hash,
-    author_pk: PublicKey,
+    author_pk: AuthorPublicKey,
     identity: Hash,
     exchange_doc: Option<Hash>,
 }
@@ -26,7 +27,7 @@ impl ContentStore {
             content_type: STRING_CONTENT_TYPE,
             size: text.len() as u64,
             data: Some(String::from(text).into_bytes()),
-            data_hash: Hash(String::from("wat")),
+            data_hash: Hash::EMPTY,
             author_pk: author.pk().clone(),
             identity: author.identity_blob().clone(),
             exchange_doc: None,
